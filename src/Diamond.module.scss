@@ -1,0 +1,107 @@
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  // padding-top: 80px;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 0px;
+    border: 0px solid transparent;
+  }
+
+  .containerItem {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    gap: 3%;
+  }
+  .containerItem > * {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .containerItem > *:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .containerItem > *:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .containerItem > *:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  .containerItem > *:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  .containerItem > *:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+
+  .containerItem > *:nth-child(6) {
+    animation-delay: 1s;
+  }
+
+  .containerItem > *:nth-child(7) {
+    animation-delay: 1.2s;
+  }
+
+  .containerItem > *:nth-child(8) {
+    animation-delay: 1.4s;
+  }
+  .containerItem > *:nth-child(9) {
+    animation-delay: 1.6s;
+  }
+
+  .containerItem > *:nth-child(10) {
+    animation-delay: 1.8s;
+  }
+
+  .containerItem > *:nth-child(11) {
+    animation-delay: 2s;
+  }
+
+  .containerItem > *:nth-child(12) {
+    animation-delay: 2.2s;
+  }
+  .containerItem > *:nth-child(13) {
+    animation-delay: 2.4s;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+
+    .containerItem {
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      gap: 5%;
+    }
+  }
+}

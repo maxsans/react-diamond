@@ -1,0 +1,190 @@
+$size: 0.65;
+$ratioDiv: calc(100% * (1 + ((0.35 * 1.539) / $size)));
+$ratio: calc(1.539 / ($size * 1.539));
+$gap: calc((((100% / (1 + ((0.35 * 1.539) / $size))) / $size) * 0.35) * 1.539);
+
+.container {
+  display: flex;
+  position: relative;
+  min-width: 22.75%;
+  flex: 100;
+
+  .diamondBorder {
+    display: flex;
+    position: absolute;
+    justify-content: end;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: $ratioDiv * $size;
+    height: 100%;
+    transform-origin: center center;
+    clip-path: polygon($gap 0%, 100% 0%, 100% 100%, 0% 100%);
+    background-color: var(--borderColorDiamond);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    transform-origin: top right;
+
+    &:hover {
+      transform: scaleX(1.03);
+
+      .diamond {
+        .diamondContainer {
+          .image {
+            img {
+              transform: scaleY(1.03);
+            }
+          }
+        }
+      }
+    }
+    .diamond {
+      display: flex;
+      width: 99.5%;
+      height: 100%;
+      transform-origin: center center;
+      clip-path: polygon($gap 0%, 100% 0%, 100% 100%, 0% 100%);
+      background-color: var(--backgroundColorDiamond);
+
+      .diamondContainer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .image {
+          position: relative;
+          aspect-ratio: 9/16;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease 0s;
+            z-index: 1;
+          }
+        }
+        .titleContainer {
+          position: absolute;
+          top: 89%;
+          left: 55%;
+          transform: translateX(-60%) translateY(-60%);
+          text-align: center;
+          max-width: 70%;
+
+          .title {
+            font-family: "JetBrains Mono";
+            position: relative;
+            font-size: 3vw;
+            color: var(--textColorDiamond);
+          }
+          .title::after {
+            content: "";
+            transform-origin: 0 0;
+            transform: scaleX(0);
+            position: absolute;
+            bottom: 0vw;
+            left: 0;
+            right: 0;
+            height: 0.4vw;
+            background: var(--textColorDiamond);
+            opacity: 0.8;
+            transition: transform 0.3s;
+            border-radius: 9999px;
+          }
+
+          .title:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .diamondContainer:hover {
+        .titleContainer {
+          .title::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+  .diamondBorder:hover {
+    // transform: scaleX(1.05);
+    cursor: pointer;
+  }
+  .diamondBorder:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    min-height: 30%;
+    min-width: auto;
+
+    .diamondBorder {
+      justify-content: center;
+      align-items: end;
+      height: $ratioDiv * $size;
+      width: 100%;
+      clip-path: polygon(0% $gap, 0% 100%, 100% 100%, 100% 0%);
+      left: 0;
+      bottom: 0;
+      top: auto;
+      right: auto;
+
+      &:hover {
+        transform: scaleY(1.03);
+        .diamond {
+          .diamondContainer {
+            .image {
+              img {
+                transform: scaleX(1.03);
+              }
+            }
+          }
+        }
+      }
+      .diamond {
+        height: 99.5%;
+        width: 100%;
+        clip-path: polygon(0% $gap, 0% 100%, 100% 100%, 100% 0%);
+
+        .diamondContainer {
+          .image {
+            aspect-ratio: 16/9;
+          }
+          .titleContainer {
+            left: 50%;
+            top: 65%;
+            width: max-content;
+            padding: 0 10%;
+            max-width: 100%;
+            transform: translateX(-50%) translateY(-50%);
+
+            .title {
+              font-size: 5vh;
+            }
+            .title::after {
+              height: 0.4vh;
+            }
+          }
+        }
+        .diamondContainer:hover {
+          .titleContainer {
+            .title::after {
+              transform: scaleY(1);
+            }
+          }
+        }
+      }
+    }
+    .diamondBorder:hover {
+      cursor: pointer;
+    }
+    .diamondBorder:hover::after {
+      transform: scaleY(1);
+    }
+  }
+}
