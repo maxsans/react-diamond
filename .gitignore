@@ -7,6 +7,10 @@ dist/
 # TypeScript
 *.tsbuildinfo
 
+# Lock files
+package-lock.json
+yarn.lock
+
 # Logs
 logs/
 *.log
